@@ -1,5 +1,5 @@
 # Sebastien
-The objective was to program the robot to perform a certain number of project.
+The objective was to program a robot car to perform a certain number of project.
 
 Equipment:
 -Arduino uno 
