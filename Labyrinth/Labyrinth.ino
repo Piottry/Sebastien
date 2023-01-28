@@ -198,6 +198,8 @@ void loop() {
 // détection de la sortie est symbolisée par un obstacle
 
     if ( getDistance() < 8) {
+      x+=1;
+      Direction[x]=6;
       setSpeed(0, 0);
       retour = true;            // on a atteint la sortie du labyrinthe. On sort alors de la première phase, on met donc retour à True.
       screen("\n    Terminus");
@@ -211,16 +213,17 @@ void loop() {
   
   else {
 
+
    // Traitement du tableau (cf rapport)
     if (Verif_Tab == true) {
       for (int p = 0; p <= 60; p++) {
 
-        if ((Direction[p] == 0 && Direction[p + 1] == 2) || (Direction[p] == 2 && Direction[p + 1] == 0)) {
+        if ((Direction[p] == 0 && Direction[p + 1] == 2 && Direction[p] != 6) || (Direction[p] == 2 && Direction[p + 1] == 0 && Direction[p] != 6)) {
           Direction[p] = 5;                                                                                 // on remplace les valeurs non voulues par 5
           Direction[p + 1] = 5;
           p = p - 2 ;
         }
-        else if ((Direction[p] == 1 && Direction[p + 1] == 3) || (Direction[p] == 3 && Direction[p + 1] == 1)) {
+        else if ((Direction[p] == 1 && Direction[p + 1] == 3 && Direction[p] != 6) || (Direction[p] == 3 && Direction[p + 1] == 1 && Direction[p] != 6)) {
           Direction[p] = 5;
           Direction[p + 1] = 5;
           p = p - 2 ;
@@ -291,7 +294,7 @@ if (getSensor(0) > 600 || getSensor(4) > 600) {
       }
       else if (Direction[q + 1] == 0) {
         setSpeed (30, 30);  // tout droit
-        delay(400);
+        delay(200);
       }
 
     }
